@@ -8,7 +8,7 @@ namespace CodeGenerator
 {
     public interface IFragmentFactory
     {
-        IFragment Creat( string type , string name );
+        IFragment Creat( string type );
         bool LoadFragmentMenu();
         bool AddFragmentType( IFragment fragment);
         bool HasFragmentType( IFragment type);

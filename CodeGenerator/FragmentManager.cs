@@ -10,14 +10,22 @@ namespace CodeGenerator
     {        
         public void AddDefineGuard(int startLevel)
         {
-            DefineGuards dfg = new DefineGuards("TEST_HPP_",startLevel);
+            DefineGuards dfg = new DefineGuards();
             this.Children.Add(dfg);            
         }
 
-        public FragmentManager( int indent ) : base( indent )
-        {   
-            AddDefineGuard(ParentIndent + 1);
+        public void AddChild(IFragment child)
+        {
+            this.Children.Add( child );
         }
 
+        public void AddChildTo( IFragment parent , IFragment child ,int indentOffset =0)
+        {
+            child.ParentIndent= parent.ParentIndent+indentOffset;           
+            parent.Children.Add( child );            
+        }
+
+        public FragmentManager() : base()
+        {}
     }
 }

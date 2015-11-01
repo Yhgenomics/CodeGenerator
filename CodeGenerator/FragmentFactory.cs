@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,21 +14,17 @@ namespace CodeGenerator
             throw new NotImplementedException();
         }
 
-        public IFragment Creat( string type , string name )
+        public IFragment Creat( string type )
         {
             IFragment fragment = null;
             try
             {
-                Type matchedType = Type.GetType(type,true);
-                Object[] inli = new Object[2];
-                inli[0] = "TESTTEST_HPP_";
-                inli[1] = 1;
-
-                fragment = ( IFragment ) Activator.CreateInstance( matchedType, inli );
+                Type matchedType = Type.GetType(type,true);               
+                fragment = ( IFragment ) Activator.CreateInstance( matchedType, null );     
             }
             catch ( TypeLoadException e )
             {
-                Console.WriteLine("Damn Type {0} not found - {1}",type,e.Message);
+                Console.WriteLine("Type {0} not found - {1}",type,e.Message);
             }
             return fragment;
         }

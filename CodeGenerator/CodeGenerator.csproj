@@ -41,11 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeLine.cs" />
-    <Compile Include="DefineGuards.cs" />
+    <Compile Include="Kits\CppCheckers.cs" />
+    <Compile Include="Kits\Method.cs" />
+    <Compile Include="Kits\Class.cs" />
+    <Compile Include="Kits\AccessModifer.cs" />
+    <Compile Include="Kits\NameSpace.cs" />
+    <Compile Include="Kits\Headers.cs" />
+    <Compile Include="Kits\DefineGuards.cs" />
     <Compile Include="FragmentBase.cs" />
     <Compile Include="FragmentFactory.cs" />
     <Compile Include="IFragment.cs" />
     <Compile Include="IFragmentFactory.cs" />
+    <Compile Include="Kits\Description.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FragmentManager.cs" />
   </ItemGroup>

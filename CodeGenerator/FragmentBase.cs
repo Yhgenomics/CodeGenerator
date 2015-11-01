@@ -125,6 +125,15 @@ namespace CodeGenerator
             OutputCodeLines( EndLines );
         }
 
+        public FragmentBase()
+        {
+            children_ = new List<IFragment>();
+            core_lines_ = new List<CodeLine>();
+            begin_lines_ = new List<CodeLine>();
+            end_lines_ = new List<CodeLine>();
+            parent_indent_ = 0;
+        }
+
         public FragmentBase(int fatherIndent)
         {
             children_ = new List<IFragment>();
@@ -143,7 +152,7 @@ namespace CodeGenerator
                 {
                     tab += "    ";
                 }
-                Console.WriteLine( tab + oneline.LineContent );
+                Console.Write( tab + oneline.LineContent );
             }
         }
 
