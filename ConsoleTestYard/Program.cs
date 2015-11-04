@@ -12,15 +12,17 @@ namespace ConsoleTestYard
     {
         static void Main( string[] args )
         {
-            ReflectionTest();
-
-            Console.WriteLine( "" );
-            Console.WriteLine( "" );
-            Console.WriteLine( "" );
-
-            CodeTest();
-
+            //ReflectionTest();          
+            //CodeTest();
+            OrderListTest();
             Console.ReadLine();
+        }
+
+        private static void OrderListTest()
+        {
+            MessageRecipeParser messageClassWriter = new MessageRecipeParser();
+            messageClassWriter.Init(string.Empty, @"F:\DreamLand\maraton-protocol\messagetemplates" );
+            messageClassWriter.GenerateFiles();
         }
 
         // Use the fragment dirctly
@@ -59,19 +61,19 @@ namespace ConsoleTestYard
         // Test for using the fragments in relection way
         static void ReflectionTest()
         {
-            FragmentManager cpp_writer = new FragmentManager();
+            FragmentManager cppWriter = new FragmentManager();
 
             FragmentFactory fragmentFactory = new FragmentFactory();
 
             IFragment codeDescription = fragmentFactory.Creat( "CodeGenerator.Description" );
-            cpp_writer.AddChild( codeDescription );
+            cppWriter.AddChild( codeDescription );
 
             IFragment defineGuards = fragmentFactory.Creat( "CodeGenerator.DefineGuards" );
             MethodInfo tempMethod = defineGuards.GetType().GetMethod( "AddGuardMark" );
             List<object> lis = new List<object>();
             lis.Add( "SOME_HPP_" );
             tempMethod.Invoke( defineGuards , lis.ToArray() );
-            cpp_writer.AddChild( defineGuards );
+            cppWriter.AddChild( defineGuards );
 
             IFragment headers = fragmentFactory.Creat( "CodeGenerator.Headers" );
             MethodInfo addHeader = headers.GetType().GetMethod( "AddHeader" );
@@ -88,14 +90,14 @@ namespace ConsoleTestYard
             headername.Add( true );
             addHeader.Invoke( headers , headername.ToArray() );
             headername.Clear();
-            cpp_writer.AddChildTo( defineGuards , headers , 0 );
+            cppWriter.AddChildTo( defineGuards , headers , 0 );
 
             IFragment NameSpace = fragmentFactory.Creat( "CodeGenerator.NameSpace" );
             MethodInfo addNS = NameSpace.GetType().GetMethod( "AddNameSpace" );
             lis.Clear();
             lis.Add( "maratonprotocol" );
             addNS.Invoke( NameSpace , lis.ToArray() );
-            cpp_writer.AddChildTo( defineGuards , NameSpace , 0 );
+            cppWriter.AddChildTo( defineGuards , NameSpace , 0 );
 
             IFragment ClassName = fragmentFactory.Creat( "CodeGenerator.Class" );
             MethodInfo addClass = ClassName.GetType().GetMethod( "AddClass" );
@@ -103,8 +105,8 @@ namespace ConsoleTestYard
             lis.Add( "MessageXXX" );
             lis.Add( "Message" );
             addClass.Invoke( ClassName , lis.ToArray() );
-            cpp_writer.AddChildTo( NameSpace , ClassName , 1 );
-            cpp_writer.GenerateAll();
+            cppWriter.AddChildTo( NameSpace , ClassName , 1 );
+            cppWriter.GenerateAll();
         }
     }
 }

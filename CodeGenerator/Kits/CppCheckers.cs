@@ -9,7 +9,9 @@ namespace CodeGenerator
     public class CppCheckers
     {
         private CppCheckers()
-        {}
+        {
+            cpp_inbuild_types_ = new List<string>();
+        }
 
         public static CppCheckers instance
         {
