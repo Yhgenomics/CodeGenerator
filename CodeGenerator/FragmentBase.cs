@@ -10,93 +10,44 @@ namespace CodeGenerator
     {
         public List<IFragment> Children
         {
-            get
-            {
-                return children_;
-            }
-
-            set
-            {
-                children_ = value;
-            }
+            get { return children_;          }
+            set { children_         = value; }
         }
 
         public int ParentIndent
         {
-            get
-            {
-                return parent_indent_;
-            }
-
-            set
-            {
-                parent_indent_ = value;
-            }
+            get { return parent_indent_;}
+            set { parent_indent_    = value; }
         }
 
         public List<CodeLine> CoreLines
         {
-            get
-            {
-                return core_lines_;
-            }
-
-            set
-            {
-                core_lines_ = value;
-            }
+            get { return core_lines_;        }
+            set { core_lines_       = value; }
         }
 
         public List<CodeLine> BeginLines
         {
-            get
-            {
-                return begin_lines_;
-            }
-
-            set
-            {
-                begin_lines_ = value;
-            }
+            get { return begin_lines_;       }
+            set { begin_lines_      = value; }
         }
 
         public List<CodeLine> EndLines
         {
-            get
-            {
-                return end_lines_;
-            }
-
-            set
-            {
-                end_lines_ = value;
-            }
+            get { return end_lines_;         }
+            set { end_lines_        = value; }
         }
 
         public string FragmentType
         {
-            get
-            {
-                return fragment_type_;
-            }
-
-            set
-            {
-                fragment_type_ = value;
-            }
+            get { return fragment_type_;     }
+            set { fragment_type_    = value; }
         }
 
         public string Name
         {
-            get
-            {
-                return name_;
-            }
-
-            set
-            {
-                name_ = value;
-            }
+            get { return name_;              }
+            set { name_             = value; }
         }
 
         public virtual void GenerateAll()
@@ -127,20 +78,20 @@ namespace CodeGenerator
 
         public FragmentBase()
         {
-            children_ = new List<IFragment>();
-            core_lines_ = new List<CodeLine>();
-            begin_lines_ = new List<CodeLine>();
-            end_lines_ = new List<CodeLine>();
-            parent_indent_ = 0;
+            children_       = new List<IFragment>();
+            core_lines_     = new List<CodeLine>();
+            begin_lines_    = new List<CodeLine>();
+            end_lines_      = new List<CodeLine>();
+            parent_indent_  = 0;
         }
 
         public FragmentBase(int fatherIndent)
         {
-            children_ = new List<IFragment>();
-            core_lines_ = new List<CodeLine>();
-            begin_lines_ = new List<CodeLine>();
-            end_lines_ = new List<CodeLine>();
-            parent_indent_ = fatherIndent;
+            children_       = new List<IFragment>();
+            core_lines_     = new List<CodeLine>();
+            begin_lines_    = new List<CodeLine>();
+            end_lines_      = new List<CodeLine>();
+            parent_indent_  = fatherIndent;
         }
 
         public virtual void OutputCodeLines( List<CodeLine> codeList)
@@ -169,11 +120,11 @@ namespace CodeGenerator
         }
 
         private List<IFragment> children_;
-        private int parent_indent_;
-        private List<CodeLine> core_lines_;
-        private List<CodeLine> begin_lines_;
-        private List<CodeLine> end_lines_;
-        private string name_;
-        private string fragment_type_;
+        private int             parent_indent_;
+        private List<CodeLine>  core_lines_;
+        private List<CodeLine>  begin_lines_;
+        private List<CodeLine>  end_lines_;
+        private string          name_;
+        private string          fragment_type_;
     }
 }

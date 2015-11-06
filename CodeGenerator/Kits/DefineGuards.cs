@@ -12,11 +12,11 @@ namespace CodeGenerator
 
         public void AddGuardMark( string mark )
         {
-            BeginLines.Add( new CodeLine( "#ifndef " + mark , 0 ) );
-            BeginLines.Add( new CodeLine( "#define " + mark , 0 ) );
+            BeginLines.Add( new CodeLine( "#ifndef " + mark             , 0 ) );
+            BeginLines.Add( new CodeLine( "#define " + mark             , 0 ) );
             BeginLines.Add( CodeLine.EmptyCodeLine );
 
-            EndLines.Add( new CodeLine( "#endif // ! End of " + mark , 0 ) );
+            EndLines.  Add( new CodeLine( "#endif // ! End of " + mark  , 0 ) );
         }
         
     }

@@ -12,17 +12,17 @@ namespace CodeGenerator
     {
         public MessageRecipeParser()
         {
-            fragment_root_ = new FragmentManager();
-            fragment_factory_ = new FragmentFactory();
-            guide_book_file_ = string.Empty;
-            material_path_ = string.Empty;
-            order_list_ = new List<HppFileDescrption>();
+            fragment_root_      = new FragmentManager();
+            fragment_factory_   = new FragmentFactory();
+            guide_book_file_    = string.Empty;
+            material_path_      = string.Empty;
+            order_list_         = new List<HppFileDescrption>();
         }
 
         public void Init( string guideBook , string materialPath )
         {
-            GuideBookFile = guideBook;
-            MaterialPath = materialPath;
+            GuideBookFile   = guideBook;
+            MaterialPath    = materialPath;
         }
 
         public void MaterialPrepare()
@@ -45,15 +45,15 @@ namespace CodeGenerator
 
             foreach ( FileInfo nextFile in materialFolder.GetFiles( "*.json" ) )
             {
-                string jsonString = File.ReadAllText( nextFile.FullName , Encoding.UTF8 );
-                List<ProtocolMetaItem> classMemberDefine = JsonConvert.DeserializeObject<List<ProtocolMetaItem>>( jsonString );
+                string                  jsonString          = File.ReadAllText( nextFile.FullName , Encoding.UTF8 );
+                List<ProtocolMetaItem>  classMemberDefine   = JsonConvert.DeserializeObject<List<ProtocolMetaItem>>( jsonString );
 
-                HppFileDescrption oneFile = new HppFileDescrption();
+                HppFileDescrption       oneFile             = new HppFileDescrption();
 
-                oneFile.ClassMemberList = classMemberDefine;
-                oneFile.NameSpaceString = @"Protocol";
-                oneFile.ClassName = Path.GetFileNameWithoutExtension( nextFile.FullName );
-                oneFile.ParentClassName = @"Message";
+                oneFile.ClassMemberList                     = classMemberDefine;
+                oneFile.NameSpaceString                     = @"Protocol";
+                oneFile.ClassName                           = Path.GetFileNameWithoutExtension( nextFile.FullName );
+                oneFile.ParentClassName                     = @"Message";
                 oneFile.HeaderDictionary.Add( "iostrem" , false );
                 oneFile.HeaderDictionary.Add( "<fstream>" , false );
                 oneFile.HeaderDictionary.Add( "json.hpp" , true );
@@ -101,9 +101,9 @@ namespace CodeGenerator
             cls.AddAccessModifer( "public" );
 
             Dictionary<string , string> param_list = new Dictionary<string , string>();
-            param_list.Add( "int" , "num" );
+            param_list.Add( "int"    , "num" );
             param_list.Add( "string" , "str" );
-            param_list.Add( "float" , "flt" );
+            param_list.Add( "float"  , "flt" );
             cls.AddMethod( "int" , "method1" , param_list );
 
             cls.AddAccessModifer( "private" );
@@ -119,54 +119,36 @@ namespace CodeGenerator
 
         public FragmentManager FragmentRoot
         {
-            get
-            {
-                return fragment_root_;
-            }
+            get { return    fragment_root_;     }
         }
 
         public FragmentFactory FragmentFactory
         {
-            get
-            {
-                return fragment_factory_;
-            }
+            get { return    fragment_factory_;  }
         }
 
         public string GuideBookFile
         {
-            get
-            {
-                return guide_book_file_;
-            }
-            set
-            {
-                guide_book_file_ = value;
-            }
+            get { return    guide_book_file_;   }
+            set { guide_book_file_   = value;   }
         }
 
         public string MaterialPath
         {
-            get
-            {
-                return material_path_;
-            }
-            set
-            {
-                material_path_ = value;
-            }
+            get { return    material_path_;     }
+            set { material_path_    = value;    }
         }
 
-        private FragmentManager fragment_root_;
-        private FragmentFactory fragment_factory_;
-        private string guide_book_file_;
-        private string material_path_;
+        private FragmentManager         fragment_root_;
+        private FragmentFactory         fragment_factory_;
+        private string                  guide_book_file_;
+        private string                  material_path_;
         private List<HppFileDescrption> order_list_;
 
         public class ProtocolMetaItem
         {
-            public string name = null;
-            public string type = null;
+            public string name  = null;
+            public string type  = null;
             public string value = null; //default value
         }
 
@@ -225,14 +207,8 @@ namespace CodeGenerator
 
             public string ClassName
             {
-                get
-                {
-                    return class_name_;
-                }
-                set
-                {
-                    class_name_ = value;
-                }
+                get { return class_name_;  }
+                set { class_name_ = value; }
             }
 
             public string NameSpaceString
@@ -245,22 +221,13 @@ namespace CodeGenerator
                     }
                     return namespace_string_;
                 }
-                set
-                {
-                    namespace_string_ = value;
-                }
+                set { namespace_string_ = value;  }
             }
 
             public List<ProtocolMetaItem> ClassMemberList
             {
-                get
-                {
-                    return class_member_list_;
-                }
-                set
-                {
-                    class_member_list_ = value;
-                }
+                get { return class_member_list_;  }
+                set { class_member_list_ = value; }
             }
 
             public string ParentClassName
@@ -273,10 +240,7 @@ namespace CodeGenerator
                     }
                     return parent_class_name_;
                 }
-                set
-                {
-                    parent_class_name_ = value;
-                }
+                set { parent_class_name_ = value; }
             }
 
             public Dictionary<string , bool> HeaderDictionary
@@ -288,17 +252,17 @@ namespace CodeGenerator
                         header_dictionary_ = new Dictionary<string , bool>();
                     }
                     return header_dictionary_;
-
                 }
             }
 
             private string file_name_;
             private string define_guards_;
             private string namespace_string_;
-            private string class_name_;
-            private List<ProtocolMetaItem> class_member_list_;
+            private string class_name_;           
             private string parent_class_name_;
-            private Dictionary<string , bool> header_dictionary_;
+
+            private List<ProtocolMetaItem>      class_member_list_;
+            private Dictionary<string , bool>   header_dictionary_;
         }
     }
 }

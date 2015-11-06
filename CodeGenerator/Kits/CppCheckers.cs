@@ -27,10 +27,7 @@ namespace CodeGenerator
 
         public List<string> CppInbuildTypes
         {
-            get
-            {
-                return cpp_inbuild_types_;
-            }            
+            get { return cpp_inbuild_types_; }
         }
 
         public bool IsInbuidType(string sometype)
@@ -43,7 +40,7 @@ namespace CodeGenerator
             throw new Exception( "IsNameLegal can not work yet!" );
         }
 
-        private List<string> cpp_inbuild_types_;
+        private List<string>       cpp_inbuild_types_;
         private static CppCheckers instance_ = null;
     }
 }

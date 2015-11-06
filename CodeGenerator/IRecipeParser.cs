@@ -8,16 +8,14 @@ namespace CodeGenerator
 {
     public interface IRecipeParser
     {
-        FragmentManager FragmentRoot{ get; }       
-        FragmentFactory FragmentFactory{ get; }
-        string GuideBookFile { get;set; }
-        string MaterialPath { get; set; }
+        FragmentManager FragmentRoot    { get;      }       
+        FragmentFactory FragmentFactory { get;      }
+        string          GuideBookFile   { get; set; }
+        string          MaterialPath    { get; set; }
 
         void Init( string guideBook , string materialPath );
         void MaterialPrepare();
         void GenerateFiles();
-        void GenerateFilesByGuideBook();
-        
-        
+        void GenerateFilesByGuideBook();     
     }
 }

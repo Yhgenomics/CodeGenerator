@@ -17,7 +17,7 @@ namespace CodeGenerator
         {
             if ( filename.Contains( "\"" ) || filename.Contains( "<" ) )
             {
-                BeginLines.Add( new CodeLine( "#include " + filename , 0 ) );
+                BeginLines.Add( new CodeLine( "#include "   + filename        , 0 ) );
             }
             else if ( islocal )
             {
@@ -25,7 +25,7 @@ namespace CodeGenerator
             }
             else
             {
-                BeginLines.Add( new CodeLine( "#include <" + filename + ">" , 0 ) );
+                BeginLines.Add( new CodeLine( "#include <"  + filename + ">"  , 0 ) );
             }                       
         }
         

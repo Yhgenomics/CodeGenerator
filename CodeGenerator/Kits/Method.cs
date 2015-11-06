@@ -13,8 +13,7 @@ namespace CodeGenerator
     {
         public Method() : base()
         {
-            EndLines.Add( CodeLine.EmptyCodeLine );
-            
+            EndLines.Add( CodeLine.EmptyCodeLine );            
         }
 
         public bool AddMethod( string return_type, string name, Dictionary<string,string> param_list )
@@ -32,15 +31,15 @@ namespace CodeGenerator
                         over_one_part += 1;
                         if ( over_one_part > 1 )
                             firstline += ",";
-                        firstline += string.Format( " {0} {1} " , item.Key , item.Value );
+                        firstline     += string.Format( " {0} {1} " , item.Key , item.Value );
                     }
                 }
                 
                 firstline += ")";
-                BeginLines.Add( new CodeLine( firstline , 0 ) );
-                BeginLines.Add( new CodeLine( "{" , 0 ) );
-                EndLines.Add( new CodeLine( "} // End of " + name , 0 ) );
-                result = true;
+                BeginLines.Add( new CodeLine( firstline             , 0 ) );
+                BeginLines.Add( new CodeLine( "{"                   , 0 ) );
+                EndLines.  Add( new CodeLine( "} // End of " + name , 0 ) );
+                result    = true;
             }
             return result;
         }

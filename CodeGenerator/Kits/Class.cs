@@ -20,9 +20,9 @@ namespace CodeGenerator
             {
                 class_define += " : public " + basename;
             }
-            BeginLines.Add( new CodeLine( class_define , 0 ) );
-            BeginLines.Add( new CodeLine( "{" , 0 ) );
-            EndLines.Add( new CodeLine( "}; // End of class " + name , 0 ) );
+            BeginLines.Add( new CodeLine( class_define                  , 0 ) );
+            BeginLines.Add( new CodeLine( "{"                           , 0 ) );
+            EndLines.  Add( new CodeLine( "}; // End of class " + name  , 0 ) );
         }
 
         public void AddAccessModifer( string modifer)

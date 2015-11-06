@@ -15,8 +15,9 @@ namespace CodeGenerator
 
         public bool AddModifer( string modifer )
         {
-            bool result = false;
-            string modifer_lower = modifer.ToLower();
+            bool    result        = false;
+            string  modifer_lower = modifer.ToLower();
+
             if ( IsLegal( modifer_lower ) )
             {
                 CoreLines.Add( new CodeLine( modifer_lower + ":" , 0 ) );
