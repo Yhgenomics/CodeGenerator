@@ -20,7 +20,7 @@ namespace CodeGenerator
             try
             {
                 Type matchedType = Type.GetType(type,true);               
-                fragment = ( IFragment ) Activator.CreateInstance( matchedType, null );     
+                fragment         = ( IFragment ) Activator.CreateInstance( matchedType, null );     
             }
             catch ( TypeLoadException e )
             {

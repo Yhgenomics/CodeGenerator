@@ -17,7 +17,7 @@ namespace CodeGenerator
         {
             BeginLines.Add( new CodeLine( "namesapce " + sapcename , 0 ) );
             BeginLines.Add( new CodeLine( "{" , 0 ) );
-            EndLines.Add( new CodeLine( "} // End of namespace " + sapcename , 0 ) );
+            EndLines.  Add( new CodeLine( "} // End of namespace " + sapcename , 0 ) );
         }
 
     }
